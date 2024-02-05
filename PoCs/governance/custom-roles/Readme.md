@@ -18,6 +18,7 @@ Below are a couple of steps to consider when designing/modifying a Custom Role i
 1. Set appropriate values for the variables in **deploy-custom-roles.ps1**
 1. Run **deploy-custom-roles.ps1** to deploy role definitions to the selected scope
 1. If you go to **role assignments** for the scope you deployed the role definition to, you should now be able to see the role definition(s) you have deployed
+
    ![Alt text](images/image.png)
 
 &nbsp;
