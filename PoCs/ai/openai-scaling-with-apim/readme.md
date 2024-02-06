@@ -13,7 +13,7 @@ The main objective of this proof of concept is to demonstrate the feasibility an
 > The proof of concept solution is designed to address a specific problem or requirement. It leverages [insert technology or framework] to provide a solution that meets the desired outcomes.
 
 ## Prerequisuites
-N/A
+- Bicep CLI v0.24.24
 <!-- - [.NET v8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) -->
 
 ## Getting Started
@@ -33,6 +33,12 @@ To get started with the proof of concept solution, follow the steps below:
     - Products: Unlimited
 1. APIM: Create a named value for the OpenAI API Key [Use named values in Azure API Management policies](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-properties?tabs=azure-portal)
 1. APIM: Add Inbound policy "Set Header" for API, with name "openai-key", the value referencing the named value above
+1. APIM: Implement 'circuit-breaker' or 'load balancer' policy for the OpenAI API 
+    1. Implement Backend for OpenAI #1
+    1. Implement Backend for OpenAI #2
+    1. Implement Backend for 'load balancer' that references above backends
+    1. Use ```<set-backend-service backend-id="<load balancer backend>" />``` as Inbound policy for API
+1. TODO: OpenAI Key (named value) only works for one OpenAI (round-robin works). How to use the right Key for each OpenAI?
 
 ## Food for thought
 
