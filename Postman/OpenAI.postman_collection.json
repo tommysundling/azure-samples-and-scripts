@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "91f9452d-e7dc-474b-a25f-34f612f19e2c",
+		"name": "OpenAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30663286"
+	},
+	"item": [
+		{
+			"name": "Get OpenAI ChatCompletion",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept-encoding": true,
+					"connection": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "api-key",
+						"value": "7d20ae87ba8041e3b02ae72903567fd9",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"messages\":[{\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},{\"role\": \"user\", \"content\": \"Does Azure OpenAI support customer managed keys?\"},{\"role\": \"assistant\", \"content\": \"Yes, customer managed keys are supported by Azure OpenAI.\"},{\"role\": \"user\", \"content\": \"Do other Azure AI services support this too?\"}]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://ai-poc-openai-sweden.openai.azure.com/openai/deployments/chatGPT35/chat/completions?api-version=2023-05-15",
+					"protocol": "https",
+					"host": [
+						"ai-poc-openai-sweden",
+						"openai",
+						"azure",
+						"com"
+					],
+					"path": [
+						"openai",
+						"deployments",
+						"chatGPT35",
+						"chat",
+						"completions"
+					],
+					"query": [
+						{
+							"key": "api-version",
+							"value": "2023-05-15"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
