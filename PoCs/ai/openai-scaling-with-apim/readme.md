@@ -39,6 +39,7 @@ To get started with the proof of concept solution, follow the steps below:
     1. Implement Backend for 'load balancer' that references above backends
     1. Use ```<set-backend-service backend-id="<load balancer backend>" />``` as Inbound policy for API
 1. TODO: OpenAI Key (named value) only works for one OpenAI (round-robin works). How to use the right Key for each OpenAI?
+    - Theory: Use Managed Identity instead
 
 ## Food for thought
 
@@ -46,6 +47,7 @@ To get started with the proof of concept solution, follow the steps below:
 - [Using Azure API Management Circuit Breaker and Load balancing with Azure OpenAI Service](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-azure-api-management-circuit-breaker-and-load-balancing/ba-p/4041003)
 - [Protect your Azure OpenAI API keys with Azure API Management](https://learn.microsoft.com/en-us/semantic-kernel/deploy/use-ai-apis-with-api-management)
 - [Azure OpenAI Service REST API reference](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)
+- [Planning for Resiliency with Azure OpenAI](https://techcommunity.microsoft.com/t5/healthcare-and-life-sciences/planning-for-resiliency-with-azure-openai/ba-p/4050673)
 
 ## Conclusion
 
