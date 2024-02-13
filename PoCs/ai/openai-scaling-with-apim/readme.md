@@ -31,21 +31,26 @@ To get started with the proof of concept solution, follow the steps below:
 1. APIM: Follow instructions, [Import and publish a backend API](https://learn.microsoft.com/en-us/azure/api-management/import-and-publish#import-and-publish-a-backend-api), to import API
     - OpenAPI spec: Use the modified swagger file for OpenAI
     - Products: Unlimited
-1. APIM: Create a named value for the OpenAI API Key [Use named values in Azure API Management policies](https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-properties?tabs=azure-portal)
-1. APIM: Add Inbound policy "Set Header" for API, with name "openai-key", the value referencing the named value above
+1. APIM: Enable Managed Identity for APIM instance
+    1. APIM: Add MI as ```Cognitive Services OpenAI User``` on both OpenAI instances
+    1. APIM: Add inbound policy for the API, ```<authentication-managed-identity resource="https://cognitiveservices.azure.com" />```
 1. APIM: Implement 'circuit-breaker' or 'load balancer' policy for the OpenAI API 
     1. Implement Backend for OpenAI #1
     1. Implement Backend for OpenAI #2
     1. Implement Backend for 'load balancer' that references above backends
     1. Use ```<set-backend-service backend-id="<load balancer backend>" />``` as Inbound policy for API
-1. TODO: OpenAI Key (named value) only works for one OpenAI (round-robin works). How to use the right Key for each OpenAI?
-    - Theory: Use Managed Identity instead
+1. Create Log Analytics workspace + Application Insights for logging
+1. APIM: Configure APIM to use Application Insights
+    - Expand ```Advanced Options``` and enable all Frontend and Backend options
+
+&nbsp;
 
 ## Food for thought
 
 - [Azure OpenAI Architecture Patterns and implementation steps](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-openai-architecture-patterns-and-implementation-steps/ba-p/3979934)
 - [Using Azure API Management Circuit Breaker and Load balancing with Azure OpenAI Service](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-azure-api-management-circuit-breaker-and-load-balancing/ba-p/4041003)
 - [Protect your Azure OpenAI API keys with Azure API Management](https://learn.microsoft.com/en-us/semantic-kernel/deploy/use-ai-apis-with-api-management)
+- [Smart load balancing for OpenAI endpoints and Azure API Management](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/smart-load-balancing-for-openai-endpoints-and-azure-api/ba-p/3991616)
 - [Azure OpenAI Service REST API reference](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)
 - [Planning for Resiliency with Azure OpenAI](https://techcommunity.microsoft.com/t5/healthcare-and-life-sciences/planning-for-resiliency-with-azure-openai/ba-p/4050673)
 
