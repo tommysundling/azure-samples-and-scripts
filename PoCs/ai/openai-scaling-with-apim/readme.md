@@ -34,14 +34,15 @@ To get started with the proof of concept solution, follow the steps below:
 1. APIM: Enable Managed Identity for APIM instance
     1. APIM: Add MI as ```Cognitive Services OpenAI User``` on both OpenAI instances
     1. APIM: Add inbound policy for the API, ```<authentication-managed-identity resource="https://cognitiveservices.azure.com" />```
-1. APIM: Implement 'circuit-breaker' or 'load balancer' policy for the OpenAI API 
-    1. Implement Backend for OpenAI #1
-    1. Implement Backend for OpenAI #2
+1. APIM: Implement 'circuit-breaker' and 'load balancer' policies for the OpenAI API 
+    1. Implement Backend for OpenAI #1 with 'circuit breaker' policy
+    1. Implement Backend for OpenAI #2 with 'circuit breaker' policy
     1. Implement Backend for 'load balancer' that references above backends
     1. Use ```<set-backend-service backend-id="<load balancer backend>" />``` as Inbound policy for API
 1. Create Log Analytics workspace + Application Insights for logging
 1. APIM: Configure APIM to use Application Insights
     - Expand ```Advanced Options``` and enable all Frontend and Backend options
+1. Ready for **demo**
 
 &nbsp;
 
