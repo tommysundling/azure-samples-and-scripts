@@ -17,12 +17,6 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
       ]
     }
     subnets: [
-      {
-        name: 'default'
-        properties: {
-          addressPrefix: '10.0.0.0/24'
-        }
-      }
     ]
   }
 }
@@ -30,6 +24,9 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 resource subnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
   parent: vnet
   name: 'default'
+  properties: {
+    addressPrefix: '10.0.0.0/24'
+  }
 }
 
 
@@ -44,7 +41,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-04-01' = {
       imageReference: {
         publisher: 'MicrosoftWindowsServer'
         offer: 'WindowsServer'
-        sku: '2019-Datacenter'
+        sku: '2022-Datacenter'
         version: 'latest'
       }
     }

@@ -4,7 +4,7 @@ param location string = 'swedencentral'
 param resourceGroupName string = 'poc-vm-basic-windows'
 
 param vnetName string = 'vm-basic-windows-vnet'
-param vmName string = 'vm-basic-windows-vm'
+param vmName string = 'windowsvm'
 param adminUsername string = 'tommy'
 @secure()
 param adminPassword string
