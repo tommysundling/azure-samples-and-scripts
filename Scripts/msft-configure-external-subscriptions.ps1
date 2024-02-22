@@ -42,5 +42,11 @@ foreach ($subscriptionID in $subscriptionIDs) {
   # Output the response
   $response
 
+  # Register resource providers needed for CAF LZ deployment
+  Write-Host "Registering resource providers..." -NoNewline
+  az provider register --namespace Microsoft.AlertsManagement
+  az provider register --namespace Microsoft.Insights
+  write-host "...done."
+
   Write-Host "Subscription done."
 }
