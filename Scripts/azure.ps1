@@ -17,7 +17,7 @@ Get-AzResourceProvider -ListAvailable |
 ### DO WORK IN EACH SUBSCRIPTION
 
 # Get list of all subscriptions in a tenant
-$tenantId = "<tenant ID>"
+$tenantId = "<tenant id>"
 $subscriptions = Get-AzSubscription -TenantId $tenantId | Select-Object -Property Name, Id
 
 # Do work in each subscription
