@@ -44,6 +44,8 @@ To get started with the proof of concept solution, follow the steps below:
     - Expand ```Advanced Options``` and enable all Frontend and Backend options -->
 1. Ready for **demo**
 
+NOTE: Working as of 2024-03-19
+
 &nbsp;
 
 <!-- ## Food for thought -->
