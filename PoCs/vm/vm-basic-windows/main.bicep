@@ -17,29 +17,29 @@ resource rg 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   location: location
 }
 
-// module vnetDeployment './vnet.bicep' = {
-//   name: 'vnetDeployment'
-//   scope: rg
-//   params: {
-//     location: location
-//     vnetName: vnetName
-//     natgatewayName: natgatewayName
-//   }
-// }
-// output vnet object = vnetDeployment.outputs.vnetObj
+module vnetDeployment './vnet.bicep' = {
+  name: 'vnetDeployment'
+  scope: rg
+  params: {
+    location: location
+    vnetName: vnetName
+    natgatewayName: natgatewayName
+  }
+}
+output vnet object = vnetDeployment.outputs.vnetObj // Currently is not used
 
-// module bastionDeployment './bastion.bicep' = {
-//   name: 'bastionDeployment'
-//   scope: rg
-//   params: {
-//     vnetName: vnetName
-//     natgatewayName: natgatewayName
-//     location: location
-//   }
-//   dependsOn: [
-//     vnetDeployment
-//   ]
-// }
+module bastionDeployment './bastion.bicep' = {
+  name: 'bastionDeployment'
+  scope: rg
+  params: {
+    vnetName: vnetName
+    natgatewayName: natgatewayName
+    location: location
+  }
+  dependsOn: [
+    vnetDeployment
+  ]
+}
 
 module vmDeployment './vm.bicep' = if(deployVm == true) {
   name: 'Deploy-VM'
@@ -52,4 +52,7 @@ module vmDeployment './vm.bicep' = if(deployVm == true) {
     adminUsername: adminUsername
     adminPassword: adminPassword
   }
+  dependsOn: [
+    bastionDeployment
+  ]
 }
