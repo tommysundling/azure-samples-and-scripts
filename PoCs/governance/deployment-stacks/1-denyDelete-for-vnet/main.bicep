@@ -1,7 +1,7 @@
 targetScope = 'subscription'
 
 param location string = 'swedencentral'
-param rgName string = 'myResourceGroup2'
+param rgName string = 'myResourceGroup'
 var vnetName = 'myVnet'
 var vnetAddressPrefix = '10.0.0.0/16'
 var subnetName = 'mySubnet'
