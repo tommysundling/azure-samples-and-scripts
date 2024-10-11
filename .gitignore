@@ -5,6 +5,7 @@
 
 *.temp
 *.bkp
+*.pdf
 
 # User-specific files
 *.rsuser
