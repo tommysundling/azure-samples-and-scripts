@@ -28,6 +28,8 @@ module vnetDeployment './vnet.bicep' = {
 }
 output vnet object = vnetDeployment.outputs.vnetObj // Currently is not used
 
+// TODO: Add existing module for Private DNS Zone
+
 module bastionDeployment './bastion.bicep' = {
   name: 'bastionDeployment'
   scope: rg

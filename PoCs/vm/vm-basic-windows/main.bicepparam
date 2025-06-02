@@ -1,5 +1,4 @@
-using 'main.bicep'
+/* TODO: Use a Key Vault for the Admin password and then use this param file */
 
-@secure()
-param adminPassword = ''
-
+param resourceGroupName = 'poc-vm-basic-windows-rg'
+param deployVM = true
