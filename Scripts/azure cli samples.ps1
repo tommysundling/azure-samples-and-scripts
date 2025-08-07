@@ -1,4 +1,4 @@
 
-# Login to the 10 demo subscriptions in "Contoso"
-az login --tenant "b5151064-651c-42f2-83ae-f5e0071efbbc"
-az account set --subscription "eb9b1426-0438-4693-99c1-129d1e5f09df"
+# Login to the 10 demo subscriptions in the "Contoso-TS" tenant
+az login --tenant "ebc1ce4a-bb8c-4db4-b38b-f14f900a45ff"
+az account set --subscription "b2e3574b-9fc4-4047-b92e-c4b21f01dc88" # Azure Internal Subscription
