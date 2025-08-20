@@ -4,7 +4,7 @@ param natpublicipname string = 'natPublicIp'
 param natgatewayName string
 
 
-resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
+resource vnet 'Microsoft.Network/virtualNetworks@2024-07-01' = {
   name: vnetName
   location: location
   properties: {
@@ -13,12 +13,10 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
         '10.0.0.0/16'
       ]
     }
-    subnets: [
-    ]
   }
 }
 
-resource vmSubnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
+resource vmSubnet 'Microsoft.Network/virtualNetworks/subnets@2024-07-01' = {
   parent: vnet
   name: 'default'
   properties: {
@@ -28,6 +26,7 @@ resource vmSubnet 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
     }
     privateEndpointNetworkPolicies: 'Enabled'
     privateLinkServiceNetworkPolicies: 'Enabled'
+    defaultOutboundAccess: false
   }
 }
 

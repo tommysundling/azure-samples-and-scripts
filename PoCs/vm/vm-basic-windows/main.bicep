@@ -8,6 +8,7 @@ param vnetName string = 'myVnet'
 param natgatewayName string = 'natGateway'
 param vmName string = 'windowsvm'
 param adminUsername string = 'tommy'
+param userObjectId string
 @secure()
 param adminPassword string
 
@@ -17,7 +18,7 @@ resource rg 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   location: location
 }
 
-module vnetDeployment './vnet.bicep' = {
+module vnetDeployment './modules/vnet.bicep' = {
   name: 'vnetDeployment'
   scope: rg
   params: {
@@ -30,7 +31,7 @@ output vnet object = vnetDeployment.outputs.vnetObj // Currently is not used
 
 // TODO: Add existing module for Private DNS Zone
 
-module bastionDeployment './bastion.bicep' = {
+module bastionDeployment './modules/bastion.bicep' = {
   name: 'bastionDeployment'
   scope: rg
   params: {
@@ -43,7 +44,7 @@ module bastionDeployment './bastion.bicep' = {
   ]
 }
 
-module vmDeployment './vm.bicep' = if(deployVm == true) {
+module vmDeployment './modules/vm.bicep' = if(deployVm == true) {
   name: 'Deploy-VM'
   scope: rg
   params: {
@@ -57,4 +58,12 @@ module vmDeployment './vm.bicep' = if(deployVm == true) {
   dependsOn: [
     bastionDeployment
   ]
+}
+
+module keyVaultDeployment './modules/keyvault.bicep' = {
+  name: 'keyVaultDeployment'
+  scope: rg
+  params: {
+    deployerObjectId: userObjectId
+  }
 }
