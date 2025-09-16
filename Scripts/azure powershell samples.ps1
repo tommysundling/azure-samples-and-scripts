@@ -29,3 +29,7 @@ function Get-SecurePassword {
     return $secureSuffix
 
 }
+
+
+# Login to Azure using device code flow and tenant ID
+Connect-AzAccount -UseDeviceAuthentication -Tenant "ebc1ce4a-bb8c-4db4-b38b-f14f900a45ff"
