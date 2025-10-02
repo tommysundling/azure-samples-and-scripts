@@ -27,7 +27,6 @@ module vnetDeployment './modules/vnet.bicep' = {
     natgatewayName: natgatewayName
   }
 }
-output vnet object = vnetDeployment.outputs.vnetObj // Currently is not used
 
 // TODO: Add existing module for Private DNS Zone
 
@@ -35,13 +34,13 @@ module bastionDeployment './modules/bastion.bicep' = {
   name: 'bastionDeployment'
   scope: rg
   params: {
-    vnetName: vnetName
+    vnetName: vnetDeployment.outputs.vnetObj.name
     natgatewayName: natgatewayName
     location: location
   }
-  dependsOn: [
-    vnetDeployment
-  ]
+  // dependsOn: [
+  //   vnetDeployment
+  // ]
 }
 
 module vmDeployment './modules/vm.bicep' = if(deployVm == true) {
