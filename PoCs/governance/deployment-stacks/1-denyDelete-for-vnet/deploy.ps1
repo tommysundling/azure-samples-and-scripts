@@ -22,4 +22,4 @@ az stack mg create `
 --action-on-unmanage 'detachAll' `
 --deny-settings-mode 'denyDelete' `
 --parameters `
-  'rgName=demo-rg-ikea'
+  'rgName=demo-rg'
