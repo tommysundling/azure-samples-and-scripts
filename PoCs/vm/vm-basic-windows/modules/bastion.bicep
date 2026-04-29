@@ -47,10 +47,6 @@ resource bastionPublicIp 'Microsoft.Network/publicIPAddresses@2021-05-01' = {
 resource bastionHost 'Microsoft.Network/bastionHosts@2022-01-01' = {
   name: bastionHostName
   location: location
-  dependsOn: [
-    vnet
-    bastionsubnet
-  ]
   properties: {
     ipConfigurations: [
       {

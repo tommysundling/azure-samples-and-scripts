@@ -8,7 +8,6 @@ param vnetName string = 'myVnet'
 param natgatewayName string = 'natGateway'
 param vmName string = 'windowsvm'
 param adminUsername string = 'tommy'
-param userObjectId string
 @secure()
 param adminPassword string
 
@@ -34,13 +33,13 @@ module bastionDeployment './modules/bastion.bicep' = {
   name: 'bastionDeployment'
   scope: rg
   params: {
-    vnetName: vnetDeployment.outputs.vnetObj.name
+    vnetName: vnetName
     natgatewayName: natgatewayName
     location: location
   }
-  // dependsOn: [
-  //   vnetDeployment
-  // ]
+  dependsOn: [
+    vnetDeployment
+  ]
 }
 
 module vmDeployment './modules/vm.bicep' = if(deployVm == true) {
@@ -57,12 +56,4 @@ module vmDeployment './modules/vm.bicep' = if(deployVm == true) {
   dependsOn: [
     bastionDeployment
   ]
-}
-
-module keyVaultDeployment './modules/keyvault.bicep' = {
-  name: 'keyVaultDeployment'
-  scope: rg
-  params: {
-    deployerObjectId: userObjectId
-  }
 }
