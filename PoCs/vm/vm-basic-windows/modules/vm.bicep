@@ -46,7 +46,7 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-04-01' = {
       imageReference: {
         publisher: 'MicrosoftWindowsServer'
         offer: 'WindowsServer'
-        sku: '2022-Datacenter'
+        sku: '2025-datacenter'
         version: 'latest'
       }
     }
