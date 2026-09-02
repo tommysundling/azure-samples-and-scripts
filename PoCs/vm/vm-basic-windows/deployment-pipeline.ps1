@@ -1,8 +1,8 @@
 $ErrorActionPreference = 'Stop'
 
 # ----- Configuration -----
-$tenantId        = 'ebc1ce4a-bb8c-4db4-b38b-f14f900a45ff'
-$subscriptionId  = 'b2e3574b-9fc4-4047-b92e-c4b21f01dc88'
+$tenantId        = 'a4684b4e-bcdf-43c0-abee-60a7e80aa557'
+$subscriptionId  = 'f21c6cb3-19d9-498c-abe6-ab3513b5f513'
 $location        = 'SwedenCentral'
 $resourceGroup   = 'poc-vm-basic-windows-rg'    # must match resourceGroupName in main.bicepparam
 $kvResourceGroup = $resourceGroup               # KV lives in the same RG as the workload
